@@ -1,3 +1,7 @@
+"""
+Автомобиль — класс для моделирования автомобиля (марка, цвет, скорость).
+"""
+
 class Car:
     def __init__(self, make, model, speed):
         self.make = make

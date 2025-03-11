@@ -1,3 +1,7 @@
+"""
+Телефон — класс для моделирования телефона (производитель, модель, заряд батареи).
+"""
+
 class Phone:
     def __init__(self, manufacturer, model, battery):
         self.manufacturer = manufacturer

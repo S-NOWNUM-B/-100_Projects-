@@ -1,3 +1,7 @@
+"""
+Студент — класс для студента с атрибутами и методами для вычисления среднего балла.
+"""
+
 class Student():
     def __init__(self, number1, number2, number3, number4, number5):
         self.number1 = number1

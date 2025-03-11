@@ -1,3 +1,7 @@
+"""
+Калькулятор — простая программа для выполнения базовых операций (сложение, вычитание, умножение, деление).
+"""
+
 class Calculator:
     def __init__(self, number1, number2, action):
         self.number1 = number1

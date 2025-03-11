@@ -1,3 +1,7 @@
+"""
+Книга — создание класса для книги (название, автор, количество страниц).
+"""
+
 class Book:
     def __init__(self, title, author, pages):
         self.title = title
