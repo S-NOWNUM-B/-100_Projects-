@@ -8,33 +8,69 @@
 Калькулятор — простая программа для выполнения базовых операций (сложение, вычитание, умножение, деление).
 """
 
-class Calculator:
-    def __init__(self, number1, number2, action):
-        self.number1 = number1
-        self.number2 = number2
-        self.action = action
+class Znac:
+    def __init__(self, num1=None, num2=None):
+        self.num1 = num1
+        self.num2 = num2
 
-    def calculate(self):
-        if self.action == "+":
-            return f"{self.number1} + {self.number2} = {self.number1 + self.number2}"
-        elif self.action == "-":
-            return f"{self.number1} - {self.number2} = {self.number1 - self.number2}"
-        elif self.action == "*":
-            return f"{self.number1} * {self.number2} = {self.number1 * self.number2}"
-        elif self.action == "/":
-            if self.number2 == 0:
-                return "ОШИБКА: делить на 0 нельзя"
-            else:
-                return f"{self.number1} / {self.number2} = {self.number1 / self.number2}"
+class Calculator(Znac):
+    def __init__(self, num1=None, num2=None):
+        super().__init__(num1, num2)
 
-cal1 = Calculator(7, 2, "+")
-cal2 = Calculator(1, 3, "-")
-cal3 = Calculator(8, 11, "*")
-cal4 = Calculator(15, 5, "/")
-cal5 = Calculator(15, 0, "/")
+    def action_first(self):
+        return self.num1 + self.num2
 
-print(cal1.calculate())
-print(cal2.calculate())
-print(cal3.calculate())
-print(cal4.calculate())
-print(cal5.calculate())
+    def action_second(self):
+        return self.num1 - self.num2
+
+    def action_third(self):
+        return self.num1 * self.num2
+
+    def action_fourth(self):
+        if self.num2 == 0:
+            raise ZeroDivisionError("\nОШИБКА: Деление на 0 невозможно")
+        return self.num1 / self.num2
+
+def main_menu():
+    while True:
+        print("\n===== ГЛАВНОЕ МЕНЮ =====")
+        print("1) Сложение")
+        print("2) Вычитание")
+        print("3) Умножение")
+        print("4) Деление")
+        print("5) Выйти из программы")
+
+        choice = input("Введите номер команды: ")
+
+        if choice in ["1", "2", "3", "4"]:
+            try:
+                num1 = float(input("\nВведите первое число: "))
+                num2 = float(input("Введите второе число: "))
+                c = Calculator(num1, num2)
+
+                if choice == "1":
+                    result = c.action_first()
+                elif choice == "2":
+                    result = c.action_second()
+                elif choice == "3":
+                    result = c.action_third()
+                elif choice == "4":
+                    result = c.action_fourth()
+
+                print("\n====================")
+                print(f"Ответ: {result}")
+                print("====================")
+
+            except ValueError:
+                print("Ошибка: Введите корректные числа!")
+            except ZeroDivisionError as e:
+                print(e)  # Вывод ошибки при делении на 0
+
+        elif choice == "5":
+            print("Выход из программы...")
+            break
+        else:
+            print("Ошибка: Введите число от 1 до 5!")
+
+if __name__ == "__main__":
+    main_menu()

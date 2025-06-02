@@ -17,7 +17,6 @@ class Triangle:
         self.a = a  # Сторона a
         self.b = b  # Сторона b
         self.c = c  # Сторона c
-        self.h = h  # Высота h
 
 
 # Класс для вычислений, наследуется от Triangle
